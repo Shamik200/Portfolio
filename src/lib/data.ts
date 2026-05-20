@@ -23,6 +23,17 @@ export const projects: Project[] = [
     github: "https://github.com/Shamik200/tripster",
     demo: "",
     featured: true
+  },
+  {
+    id: 3,
+    title: "AlgoForge - Institutional-Grade Trading System",
+    description: "Institutional-grade algorithmic trading system with 31 strategies across 5 market regimes, powered by AI agents and ML models.",
+    longDescription: "An institutional-grade algorithmic trading system featuring 31 strategies across 5 market regimes. Built with a modular pipeline: AI-powered fundamental analysis agents, 31 technical strategies with regime detection, XGBoost/LSTM/RL ML models, a risk management VETO layer, and a paper/live trading execution engine with a real-time Next.js dashboard.",
+    image: "/projects/algoforge.jpg",
+    tags: ["Python", "FastAPI", "XGBoost", "LSTM", "Reinforcement Learning", "Next.js", "Docker"],
+    github: "https://github.com/Shamik200/AlgoForge",
+    demo: "",
+    featured: true
   }
 ]
 
@@ -60,11 +71,11 @@ export const blogPosts: BlogPost[] = [
 ]
 
 export const skills: Skill[] = [
-  // Mobile Development
-  { name: "Kotlin", level: 85, category: "mobile" },
-  { name: "Jetpack Compose", level: 80, category: "mobile" },
-  { name: "Android SDK", level: 85, category: "mobile" },
-  { name: "Firebase", level: 75, category: "mobile" },
+  // Web Development
+  { name: "React", level: 85, category: "mobile" },
+  { name: "Next.js", level: 80, category: "mobile" },
+  { name: "FastAPI", level: 82, category: "mobile" },
+  { name: "TypeScript", level: 78, category: "mobile" },
   
   // AI/ML
   { name: "Python", level: 90, category: "ai-ml" },
@@ -72,13 +83,6 @@ export const skills: Skill[] = [
   { name: "Scikit-learn", level: 88, category: "ai-ml" },
   { name: "Pandas", level: 85, category: "ai-ml" },
   { name: "NumPy", level: 85, category: "ai-ml" },
-  
-  // DevOps (Learning)
-  { name: "Git", level: 85, category: "devops" },
-  { name: "Docker", level: 60, category: "devops" },
-  { name: "Kubernetes", level: 60, category: "devops" },
-  { name: "CI/CD", level: 50, category: "devops" },
-  { name: "FastAPI", level: 75, category: "devops" },
   
   // Competitive Programming
   { name: "Data Structures", level: 85, category: "cp" },

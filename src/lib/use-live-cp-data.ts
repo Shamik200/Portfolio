@@ -51,7 +51,18 @@ export function useLiveCPData(staticData: CPPlatform[]) {
         ...platform,
         rating: liveData.leetcode.ranking,
         problemsSolved: liveData.leetcode.problemsSolved,
-        acceptanceRate: liveData.leetcode.acceptanceRate,
+        lastUpdated: lastUpdated?.toISOString() || platform.lastUpdated,
+      };
+    }
+
+    if (platform.id === 'codechef' && liveData.codechef) {
+      return {
+        ...platform,
+        rating: liveData.codechef.rating,
+        maxRating: liveData.codechef.maxRating,
+        rank: liveData.codechef.rank,
+        problemsSolved: liveData.codechef.problemsSolved,
+        contestsParticipated: liveData.codechef.contestsParticipated,
         lastUpdated: lastUpdated?.toISOString() || platform.lastUpdated,
       };
     }

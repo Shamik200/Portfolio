@@ -48,7 +48,7 @@ export function HeroSection() {
             <div className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900/50 border border-gray-700/50 rounded-full text-lg sm:text-xl font-semibold backdrop-blur-sm">
               <span className="w-2 h-2 bg-gray-400 rounded-full animate-pulse" />
               <span className="bg-gradient-to-r from-blue-400 via-white to-blue-400 bg-clip-text text-transparent font-semibold">
-                GenAI & Agentic AI | Machine Learning & Deep Learning | DevOps (Learning) | Competitive Programming
+                GenAI & Agentic AI | Machine Learning & Deep Learning | Competitive Programming
               </span>
             </div>
           </motion.div>
@@ -72,20 +72,6 @@ export function HeroSection() {
               , and conquering{" "}
             </span>
             <span className="bg-gradient-to-r from-white via-blue-400 to-white bg-clip-text text-transparent font-semibold">algorithmic challenges</span>
-            <span className="bg-gradient-to-r from-blue-400 via-white to-blue-400 bg-clip-text text-transparent">
-              .
-              <br />
-              Currently exploring{" "}
-            </span>
-            <span className="bg-gradient-to-r from-white via-blue-400 to-white bg-clip-text text-transparent font-semibold">DevOps</span>
-            <span className="bg-gradient-to-r from-blue-400 via-white to-blue-400 bg-clip-text text-transparent">
-              {" "}while{" "}
-            </span>
-            <span className="bg-gradient-to-r from-white via-blue-400 to-white bg-clip-text text-transparent font-semibold">hiking</span>
-            <span className="bg-gradient-to-r from-blue-400 via-white to-blue-400 bg-clip-text text-transparent">
-              , and perfecting my game on the{" "}
-            </span>
-            <span className="bg-gradient-to-r from-white via-blue-400 to-white bg-clip-text text-transparent font-semibold">football field</span>
             <span className="bg-gradient-to-r from-blue-400 via-white to-blue-400 bg-clip-text text-transparent">.</span>
           </motion.p>
 

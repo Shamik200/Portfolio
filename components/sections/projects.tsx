@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { useState } from "react"
-import { ExternalLink, Github, Eye, TrendingUp, Brain, Search } from "lucide-react"
+import { ExternalLink, Github, Eye, TrendingUp, Brain, Search, BarChart2 } from "lucide-react"
 import { projects } from "../../src/lib/data"
 import { Project } from "../../src/lib/types"
 
@@ -12,17 +12,13 @@ const projectAnimations = {
     icon: TrendingUp,
     bgGradient: "from-green-400/20 via-emerald-500/20 to-cyan-400/20"
   },
-  2: { // Hybrid Data Assimilation
+  2: { // Tripster Travel Planner
     icon: Brain,
     bgGradient: "from-blue-400/20 via-indigo-500/20 to-purple-400/20"
   },
-  3: { // ML Course Notebooks
-    icon: Brain,
-    bgGradient: "from-purple-400/20 via-pink-500/20 to-red-400/20"
-  },
-  4: { // Information Retrieval System
-    icon: Search,
-    bgGradient: "from-cyan-400/20 via-blue-500/20 to-indigo-400/20"
+  3: { // AlgoForge Trading System
+    icon: BarChart2,
+    bgGradient: "from-orange-400/20 via-red-500/20 to-pink-400/20"
   }
 }
 
@@ -95,46 +91,46 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                 </div>
               )}
 
-              {project.id === 3 && ( // ML Classification - Neural Network
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="grid grid-cols-4 gap-4 opacity-40">
-                    {[...Array(12)].map((_, i) => (
-                      <motion.div
-                        key={i}
-                        className="w-3 h-3 bg-purple-400 rounded-full"
-                        animate={{ 
-                          scale: [0.5, 1, 0.5],
-                          opacity: [0.3, 1, 0.3]
-                        }}
-                        transition={{ 
-                          duration: 2, 
-                          repeat: Infinity, 
-                          delay: i * 0.1,
-                          ease: "easeInOut"
-                        }}
+              {project.id === 3 && ( // AlgoForge - Candlestick Chart
+                <svg className="absolute inset-0 w-full h-full opacity-35" viewBox="0 0 400 200">
+                  {/* Candlestick bars */}
+                  {[
+                    { x: 40,  open: 140, close: 100, high: 90,  low: 155, color: "#22c55e" },
+                    { x: 80,  open: 100, close: 130, high: 85,  low: 140, color: "#ef4444" },
+                    { x: 120, open: 130, close: 90,  high: 75,  low: 145, color: "#22c55e" },
+                    { x: 160, open: 90,  close: 120, high: 70,  low: 130, color: "#ef4444" },
+                    { x: 200, open: 120, close: 70,  high: 55,  low: 135, color: "#22c55e" },
+                    { x: 240, open: 70,  close: 100, high: 50,  low: 115, color: "#ef4444" },
+                    { x: 280, open: 100, close: 60,  high: 45,  low: 110, color: "#22c55e" },
+                    { x: 320, open: 60,  close: 40,  high: 30,  low: 75,  color: "#22c55e" },
+                    { x: 360, open: 40,  close: 65,  high: 25,  low: 80,  color: "#ef4444" },
+                  ].map((c, i) => (
+                    <motion.g key={i} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: i * 0.15 }}>
+                      {/* Wick */}
+                      <line x1={c.x} y1={c.high} x2={c.x} y2={c.low} stroke={c.color} strokeWidth="1.5" opacity="0.7" />
+                      {/* Body */}
+                      <rect
+                        x={c.x - 8}
+                        y={Math.min(c.open, c.close)}
+                        width={16}
+                        height={Math.abs(c.open - c.close)}
+                        fill={c.color}
+                        opacity="0.8"
                       />
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {project.id === 4 && ( // Android App - Phone
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <motion.div
-                    className="w-20 h-32 border-2 border-orange-400/50 rounded-lg relative"
-                    animate={{ 
-                      rotateY: [0, 15, 0, -15, 0]
-                    }}
-                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                  >
-                    <div className="w-full h-6 bg-orange-400/30 rounded-t-md" />
-                    <motion.div
-                      className="absolute top-8 left-2 right-2 h-16 bg-gradient-to-b from-orange-400/20 to-red-400/20 rounded"
-                      animate={{ opacity: [0.5, 1, 0.5] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    />
-                  </motion.div>
-                </div>
+                    </motion.g>
+                  ))}
+                  {/* Moving avg line */}
+                  <motion.path
+                    d="M40,120 Q120,90 200,75 T360,50"
+                    stroke="#f59e0b"
+                    strokeWidth="2"
+                    fill="none"
+                    strokeDasharray="6 3"
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                  />
+                </svg>
               )}
             </div>
 

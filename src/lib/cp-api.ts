@@ -12,9 +12,13 @@ export interface LiveCPData {
     ranking: number;
     problemsSolved: number;
     acceptanceRate: number;
-    submitStats: {
-      acSubmissionNum: Array<{ difficulty: string; count: number; submissions: number }>;
-    };
+  };
+  codechef?: {
+    rating: number;
+    maxRating: number;
+    rank: string;
+    problemsSolved: number;
+    contestsParticipated: number;
   };
 }
 
@@ -75,81 +79,33 @@ export async function fetchCodeforcesData(username: string): Promise<CodeforcesD
   }
 }
 
-// LeetCode types
-interface LeetCodeStat {
-  difficulty: string;
-  count: number;
-  submissions: number;
-}
-
+// LeetCode data via community stats API (avoids CORS issues)
 interface LeetCodeData {
   ranking: number;
   problemsSolved: number;
   acceptanceRate: number;
-  submitStats: {
-    acSubmissionNum: LeetCodeStat[];
-  };
 }
 
-// LeetCode API (using unofficial GraphQL endpoint)
 export async function fetchLeetCodeData(username: string): Promise<LeetCodeData | null> {
   try {
-    const query = `
-      query getUserProfile($username: String!) {
-        matchedUser(username: $username) {
-          username
-          profile {
-            ranking
-            userAvatar
-            realName
-          }
-          submitStats: submitStatsGlobal {
-            acSubmissionNum {
-              difficulty
-              count
-              submissions
-            }
-          }
-        }
-      }
-    `;
-
-    const response = await fetch('https://leetcode.com/graphql', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Referer': 'https://leetcode.com',
-      },
-      body: JSON.stringify({
-        query,
-        variables: { username },
-      }),
+    const response = await fetch(`https://leetcode-stats-api.herokuapp.com/${username}`, {
+      headers: { 'Accept': 'application/json' },
     });
 
+    if (!response.ok) {
+      throw new Error(`LeetCode API returned ${response.status}`);
+    }
+
     const data = await response.json();
-    
-    if (data.errors) {
-      throw new Error('Failed to fetch LeetCode data');
+
+    if (data.status === 'error') {
+      throw new Error(data.message || 'Failed to fetch LeetCode data');
     }
-
-    const user = data.data.matchedUser;
-    if (!user) {
-      throw new Error('User not found');
-    }
-
-    const totalSolved = user.submitStats.acSubmissionNum.reduce(
-      (sum: number, stat: LeetCodeStat) => sum + stat.count, 0
-    );
-
-    const totalSubmissions = user.submitStats.acSubmissionNum.reduce(
-      (sum: number, stat: LeetCodeStat) => sum + stat.submissions, 0
-    );
 
     return {
-      ranking: user.profile.ranking,
-      problemsSolved: totalSolved,
-      acceptanceRate: totalSubmissions > 0 ? parseFloat(((totalSolved / totalSubmissions) * 100).toFixed(1)) : 0,
-      submitStats: user.submitStats,
+      ranking: data.ranking || 0,
+      problemsSolved: data.totalSolved || 0,
+      acceptanceRate: data.acceptanceRate || 0,
     };
   } catch (error) {
     console.error('Error fetching LeetCode data:', error);
@@ -157,15 +113,55 @@ export async function fetchLeetCodeData(username: string): Promise<LeetCodeData 
   }
 }
 
+// CodeChef data via community API
+interface CodeChefData {
+  rating: number;
+  maxRating: number;
+  rank: string;
+  problemsSolved: number;
+  contestsParticipated: number;
+}
+
+export async function fetchCodeChefData(username: string): Promise<CodeChefData | null> {
+  try {
+    const response = await fetch(`https://codechef-api.vercel.app/${username}`, {
+      headers: { 'Accept': 'application/json' },
+    });
+
+    if (!response.ok) {
+      throw new Error(`CodeChef API returned ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    if (!data.success) {
+      throw new Error('Failed to fetch CodeChef data');
+    }
+
+    return {
+      rating: data.currentRating || 0,
+      maxRating: data.highestRating || 0,
+      rank: data.stars ? `${data.stars} Star` : 'Unrated',
+      problemsSolved: data.fullySolved?.length || 0,
+      contestsParticipated: data.ratingData?.length || 0,
+    };
+  } catch (error) {
+    console.error('Error fetching CodeChef data:', error);
+    return null;
+  }
+}
+
 // Function to get all live data
 export async function fetchAllLiveData(): Promise<LiveCPData> {
-  const [codeforcesData, leetcodeData] = await Promise.all([
+  const [codeforcesData, leetcodeData, codechefData] = await Promise.all([
     fetchCodeforcesData('R_E_D_D_E_V_I_L'),
     fetchLeetCodeData('C_RONALDO7'),
+    fetchCodeChefData('shamik_munjani'),
   ]);
 
   return {
     codeforces: codeforcesData || undefined,
     leetcode: leetcodeData || undefined,
+    codechef: codechefData || undefined,
   };
 }

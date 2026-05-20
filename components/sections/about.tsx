@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Code2, Smartphone, Brain, Settings } from "lucide-react";
+import { Code2, Smartphone, Brain } from "lucide-react";
 import { skills } from "../../src/lib/data";
 import { Skill } from "../../src/lib/types";
 
@@ -10,34 +10,31 @@ const beyondCode = [
   {
     icon: "⚽",
     title: "Football", 
-    description: "Team strategy and quick decision-making on the field translate to collaborative problem-solving in development teams"
+    description: "Team player who brings the same competitive spirit to engineering challenges."
   },
   {
     icon: "🎬",
     title: "Movies",
-    description: "Film analysis and storytelling techniques that inspire creative problem-solving approaches"
+    description: "Film enthusiast who appreciates great storytelling and creative direction."
   },
   {
     icon: "🏔️", 
     title: "Hiking",
-    description: "Scaling peaks teaches resilience, planning, and problem-solving under pressure - essential skills for tackling complex systems"
+    description: "Finding clarity on mountain trails — resilience built one summit at a time."
   }
 ];
 
 const skillCategories = [
-  { id: "mobile", name: "App & Web Development", icon: Smartphone, color: "text-blue-400", bgColor: "bg-gradient-to-br from-blue-500/20 to-cyan-500/20" },
+  { id: "mobile", name: "Web Development", icon: Smartphone, color: "text-blue-400", bgColor: "bg-gradient-to-br from-blue-500/20 to-cyan-500/20" },
   { id: "ai-ml", name: "AI/ML & GenAI", icon: Brain, color: "text-blue-300", bgColor: "bg-gradient-to-br from-blue-600/20 to-blue-500/20" },
-  { id: "devops", name: "DevOps & Cloud", icon: Settings, color: "text-blue-400", bgColor: "bg-gradient-to-br from-blue-700/20 to-blue-600/20" },
   { id: "cp", name: "Competitive Programming", icon: Code2, color: "text-blue-300", bgColor: "bg-gradient-to-br from-blue-600/20 to-blue-700/20" }
 ];
 
-// Curated Tech stack - 12 items for 2 rows of 6
+// Curated Tech stack
 const techStack = [
   { name: "Python", icon: "🐍", color: "#3776ab", category: "language" },
-  { name: "Kotlin", icon: "🎯", color: "#7F52FF", category: "language" },
   { name: "React", icon: "⚛️", color: "#61DAFB", category: "frontend" },
   { name: "FastAPI", icon: "⚡", color: "#009688", category: "backend" },
-  { name: "Jetpack Compose", icon: "📱", color: "#4285F4", category: "mobile" },
   { name: "Docker", icon: "🐳", color: "#2496ED", category: "devops" },
   { name: "LangChain", icon: "🔗", color: "#1C3A3A", category: "ai" },
   { name: "LangGraph", icon: "📊", color: "#4A90E2", category: "ai" },
@@ -155,7 +152,7 @@ export function AboutSection() {
             <div className="relative z-10 text-center">
               <p className="text-xl leading-relaxed max-w-4xl mx-auto">
                 <span className="bg-gradient-to-r from-blue-400 via-white to-blue-400 bg-clip-text text-transparent">
-                  I&apos;m Shamik Munjani, a B.Tech Computer Science student passionate about GenAI development, machine learning, and deep learning. I have a strong foundation in DSA, competitive programming, and scalable AI/ML system design. Currently exploring DevOps to bridge deployment and automation.
+                  I&apos;m Shamik Munjani, a B.Tech Computer Science student passionate about GenAI development, machine learning, and deep learning. I have a strong foundation in DSA, competitive programming, and scalable AI/ML system design.
                 </span>
               </p>
             </div>
@@ -195,7 +192,7 @@ export function AboutSection() {
             
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-blue-500/5 to-purple-500/5 rounded-2xl blur-xl"></div>
-              <div className="relative grid md:grid-cols-2 gap-6">
+              <div className="relative grid md:grid-cols-3 gap-6">
                 {skillCategories.map((category) => {
                   const categorySkills = skills.filter(skill => skill.category === category.id);
                   return (

@@ -309,56 +309,13 @@ export function CompetitiveProgrammingSection() {
             </div>
           </div>
           
-          {/* Combined Platform Cards and Stats */}
+          {/* Combined Platform Cards */}
           <div className="space-y-8">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {livePlatforms.map((platform, index) => (
                 <PlatformCard key={platform.id} platform={platform} index={index} />
               ))}
             </div>
-
-            {/* Integrated Live Stats */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="bg-gradient-to-r from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6"
-            >
-              <div className="flex items-center justify-between mb-6">
-                <h4 className="text-xl font-bold text-white">Combined Live Statistics</h4>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
-                  <span className="text-sm text-blue-400">Real-time</span>
-                </div>
-              </div>
-              
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div className="text-center p-4 bg-blue-500/10 rounded-xl border border-blue-500/20">
-                  <div className="text-2xl font-bold text-blue-400">
-                    {livePlatforms.reduce((sum, p) => sum + p.problemsSolved, 0)}
-                  </div>
-                  <div className="text-sm text-gray-400">Total Problems</div>
-                </div>
-                <div className="text-center p-4 bg-blue-500/10 rounded-xl border border-blue-500/20">
-                  <div className="text-2xl font-bold text-blue-400">
-                    {livePlatforms.reduce((sum, p) => sum + (p.contestsParticipated || 0), 0)}
-                  </div>
-                  <div className="text-sm text-gray-400">Total Contests</div>
-                </div>
-                <div className="text-center p-4 bg-blue-600/10 rounded-xl border border-blue-600/20">
-                  <div className="text-2xl font-bold text-blue-300">
-                    {Math.round(livePlatforms.reduce((sum, p) => sum + p.rating, 0) / livePlatforms.length)}
-                  </div>
-                  <div className="text-sm text-gray-400">Avg Rating</div>
-                </div>
-                <div className="text-center p-4 bg-orange-500/10 rounded-xl border border-orange-500/20">
-                  <div className="text-2xl font-bold text-orange-400">
-                    {livePlatforms.length}
-                  </div>
-                  <div className="text-sm text-gray-400">Active Platforms</div>
-                </div>
-              </div>
-            </motion.div>
           </div>
         </div>
 
