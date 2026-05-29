@@ -83,7 +83,7 @@ export function HeroSection() {
             className="flex justify-center mb-16"
           >
             <motion.a
-              href="/resume.pdf"
+              href="/Resume.pdf"
               download="Shamik_Munjani_Resume.pdf"
               className="modern-button group relative px-10 py-5 rounded-xl font-bold text-xl shadow-2xl overflow-hidden"
               whileHover={{ scale: 1.08, y: -3 }}

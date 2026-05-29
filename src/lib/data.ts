@@ -76,7 +76,6 @@ export const skills: Skill[] = [
   { name: "FastAPI", level: 92, category: "backend" },
   { name: "PostgreSQL", level: 88, category: "backend" },
   { name: "Redis", level: 86, category: "backend" },
-  { name: "FastMCP", level: 80, category: "backend" },
   { name: "Docker", level: 84, category: "backend" },
   { name: "REST APIs", level: 90, category: "backend" },
   
@@ -87,8 +86,9 @@ export const skills: Skill[] = [
   { name: "NumPy", level: 85, category: "ai-ml" },
   { name: "LangChain", level: 82, category: "ai-ml" },
   { name: "LangGraph", level: 80, category: "ai-ml" },
+  { name: "FastMCP", level: 78, category: "ai-ml" },
   { name: "FastXB", level: 78, category: "ai-ml" },
-  { name: "XCB", level: 76, category: "ai-ml" },
+  { name: "FAISS", level: 76, category: "ai-ml" },
   
   // Competitive Programming
   { name: "Data Structures", level: 85, category: "cp" },
