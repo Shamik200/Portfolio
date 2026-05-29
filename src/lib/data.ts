@@ -85,6 +85,10 @@ export const skills: Skill[] = [
   { name: "Scikit-learn", level: 88, category: "ai-ml" },
   { name: "Pandas", level: 85, category: "ai-ml" },
   { name: "NumPy", level: 85, category: "ai-ml" },
+  { name: "LangChain", level: 82, category: "ai-ml" },
+  { name: "LangGraph", level: 80, category: "ai-ml" },
+  { name: "FastXB", level: 78, category: "ai-ml" },
+  { name: "XCB", level: 76, category: "ai-ml" },
   
   // Competitive Programming
   { name: "Data Structures", level: 85, category: "cp" },

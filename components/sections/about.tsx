@@ -44,6 +44,8 @@ const techStack = [
   { name: "Ensemble Learning", icon: "🎯", color: "#8B5CF6", category: "ai" },
   { name: "OpenAI", icon: "🤖", color: "#10a37f", category: "ai" }
 ];
+// Added one more tech icon (XCB) as requested
+techStack.push({ name: "XCB", icon: "🧩", color: "#FF6B6B", category: "ai" });
 
 function TechStackItem({ tech, index }: { tech: typeof techStack[0]; index: number }) {
   return (
