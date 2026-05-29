@@ -71,14 +71,16 @@ export const blogPosts: BlogPost[] = [
 ]
 
 export const skills: Skill[] = [
-  // Web Development
-  { name: "React", level: 85, category: "mobile" },
-  { name: "Next.js", level: 80, category: "mobile" },
-  { name: "FastAPI", level: 82, category: "mobile" },
-  { name: "TypeScript", level: 78, category: "mobile" },
+  // Backend Development
+  { name: "Python", level: 90, category: "backend" },
+  { name: "FastAPI", level: 92, category: "backend" },
+  { name: "PostgreSQL", level: 88, category: "backend" },
+  { name: "Redis", level: 86, category: "backend" },
+  { name: "FastMCP", level: 80, category: "backend" },
+  { name: "Docker", level: 84, category: "backend" },
+  { name: "REST APIs", level: 90, category: "backend" },
   
   // AI/ML
-  { name: "Python", level: 90, category: "ai-ml" },
   { name: "TensorFlow-Keras", level: 85, category: "ai-ml" },
   { name: "Scikit-learn", level: 88, category: "ai-ml" },
   { name: "Pandas", level: 85, category: "ai-ml" },

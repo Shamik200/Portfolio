@@ -24,7 +24,7 @@ export interface BlogPost {
 export interface Skill {
   name: string
   level: number
-  category: 'mobile' | 'ai-ml' | 'devops' | 'cp'
+  category: 'backend' | 'ai-ml' | 'devops' | 'cp'
 }
 
 export interface Experience {

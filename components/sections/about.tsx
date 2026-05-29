@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Code2, Smartphone, Brain } from "lucide-react";
+import { Code2, Server, Brain } from "lucide-react";
 import { skills } from "../../src/lib/data";
 import { Skill } from "../../src/lib/types";
 
@@ -25,7 +25,7 @@ const beyondCode = [
 ];
 
 const skillCategories = [
-  { id: "mobile", name: "Web Development", icon: Smartphone, color: "text-blue-400", bgColor: "bg-gradient-to-br from-blue-500/20 to-cyan-500/20" },
+  { id: "backend", name: "Backend Development", icon: Server, color: "text-blue-400", bgColor: "bg-gradient-to-br from-blue-500/20 to-cyan-500/20" },
   { id: "ai-ml", name: "AI/ML & GenAI", icon: Brain, color: "text-blue-300", bgColor: "bg-gradient-to-br from-blue-600/20 to-blue-500/20" },
   { id: "cp", name: "Competitive Programming", icon: Code2, color: "text-blue-300", bgColor: "bg-gradient-to-br from-blue-600/20 to-blue-700/20" }
 ];
@@ -33,13 +33,14 @@ const skillCategories = [
 // Curated Tech stack
 const techStack = [
   { name: "Python", icon: "🐍", color: "#3776ab", category: "language" },
-  { name: "React", icon: "⚛️", color: "#61DAFB", category: "frontend" },
   { name: "FastAPI", icon: "⚡", color: "#009688", category: "backend" },
+  { name: "PostgreSQL", icon: "🗄️", color: "#336791", category: "backend" },
+  { name: "Redis", icon: "🔴", color: "#DC382D", category: "backend" },
+  { name: "FastMCP", icon: "🔌", color: "#8B5CF6", category: "backend" },
   { name: "Docker", icon: "🐳", color: "#2496ED", category: "devops" },
   { name: "LangChain", icon: "🔗", color: "#1C3A3A", category: "ai" },
   { name: "LangGraph", icon: "📊", color: "#4A90E2", category: "ai" },
   { name: "TensorFlow", icon: "🧠", color: "#FF6F00", category: "ai" },
-  { name: "PyTorch", icon: "🔥", color: "#EE4C2C", category: "ai" },
   { name: "Ensemble Learning", icon: "🎯", color: "#8B5CF6", category: "ai" },
   { name: "OpenAI", icon: "🤖", color: "#10a37f", category: "ai" }
 ];
